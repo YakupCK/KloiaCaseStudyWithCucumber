@@ -33,12 +33,12 @@ public class HomePage extends BasePage {
 		driver.get(PropertyReader.getProperty("url"));
 	}
 
-	//--navigate to homepage:with Parameter--
+	//--navigate to homepage: with provided URL--
 	public void goToHomePage(String URL) {
 		driver.get(PropertyReader.getProperty("url"));
 	}
 
-//	//close pop up at the beginning
+	//close pop up at the beginning (if appears)
 //	public void closePopUp() {
 //		try {
 //			String locator = "button[class='c-close-icon c-modal-close-icon']";

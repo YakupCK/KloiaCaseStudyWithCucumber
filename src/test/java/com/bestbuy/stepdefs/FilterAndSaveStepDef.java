@@ -20,17 +20,9 @@ public class FilterAndSaveStepDef {
 
 	private String expectedItemName;
 
-
-//	@Given("I go to following modules in order:")
-//	public void i_go_to_following_modules_in_order(List<String> modules) {
-//		for (int i = 0; i < modules.size(); i++) {
-//			homePage.navigateToMenuOptions(modules.get(i));
-//		}
-//	}
-
-	@Given("I go to following modules in order:")
-	public void i_go_to_following_modules_in_order(List<String> modules) {
-			homePage.navigateToMenuOptions(modules);
+	@Given("I go to following modules in below order:")
+	public void i_go_to_following_modules_in_below_order(List<String> modules) {
+		homePage.navigateToMenuOptions(modules);
 	}
 
 	@When("I filter the brands by {string}")

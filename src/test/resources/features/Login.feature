@@ -1,19 +1,4 @@
-# Task-2
-# ● Navigate to https://www.bestbuy.com
-# ● Go to Sign In page
-# ● Fill login form with a valid email address and a password
-# ● Login with Enter button (Behaviour of Enter key should be executed with Selenium)
-# ● Verify successful login
-
-#  Task-3
-#  ● Navigate to https://www.bestbuy.com
-#  ● Sign in with Google
-#  ● Verify successful login
-#  ● Open new tab
-#  ● Navigate to https://www.bestbuy.com
-#  ● Verify user logged in on the newly opened tab
-
-Feature: Login functionality
+Feature: Login feature
 
   @ChromeProfile @wip @google
   Scenario: Task-3: Login with Google account
@@ -34,3 +19,19 @@ Feature: Login functionality
     Then I should be logged in
     And I log out
 
+
+
+  # Task-2
+  # ● Navigate to https://www.bestbuy.com
+  # ● Go to Sign In page
+  # ● Fill login form with a valid email address and a password
+  # ● Login with Enter button (Behaviour of Enter key should be executed with Selenium)
+  # ● Verify successful login
+
+  #  Task-3
+  #  ● Navigate to https://www.bestbuy.com
+  #  ● Sign in with Google
+  #  ● Verify successful login
+  #  ● Open new tab
+  #  ● Navigate to https://www.bestbuy.com
+  #  ● Verify user logged in on the newly opened tab

@@ -27,7 +27,7 @@ public class SignInPage extends BasePage {
 		passwordField.sendKeys(password, Keys.ENTER);
 	}
 
-		//login with Google account
+	//login with Google account
 	public void loginWithGoogle(){
 		UtilityMethods.waitClickability(signInWithGoogle,1);
 		signInWithGoogle.click();

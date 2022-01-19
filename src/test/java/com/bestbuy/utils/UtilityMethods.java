@@ -13,8 +13,10 @@ import java.util.Set;
 
 public class UtilityMethods {
 
+	//driver object initialized by Hooks
 	private static WebDriver driver = Hooks.driver;
 
+	//wait for an element to be clickable (with web element)
 	public static void waitClickability(WebElement element, int timeOut){
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, timeOut);
@@ -24,6 +26,7 @@ public class UtilityMethods {
 		}
 	}
 
+	//wait for an element to be clickable (with By locator)
 	public static void waitClickability(By locator, int timeOut){
 		try {
 			WebDriverWait wait = new WebDriverWait(driver,timeOut);
@@ -33,6 +36,7 @@ public class UtilityMethods {
 		}
 	}
 
+	//wait till URL contains a specific text
 	public static void waitForURLContains(String urlPart, int timeOut) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, timeOut);
@@ -42,6 +46,7 @@ public class UtilityMethods {
 		}
 	}
 
+	//wait for visibility of a web element
 	public static void waitForVisibility(WebElement element, int timeOut) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, timeOut);
@@ -51,15 +56,7 @@ public class UtilityMethods {
 		}
 	}
 
-	public static void waitForVisibility(By locator, int timeOut) {
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, timeOut);
-			wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
+	//wait till a new window gets opened
 	public static void waitForNewWindow(){
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 4);
@@ -69,6 +66,7 @@ public class UtilityMethods {
 		}
 	}
 
+	//switch to another window by passing index number
 	public static void switchToWindow(int index){
 		try {
 			waitForNewWindow();
@@ -80,6 +78,7 @@ public class UtilityMethods {
 		}
 	}
 
+	//wait for a web element till has a specific text
 	public static void waitForText(WebElement element, String text){
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 6);
@@ -89,11 +88,13 @@ public class UtilityMethods {
 		}
 	}
 
+	//click on a web element using JSexecutor
 	public static void clickWithJSExe(WebElement element) {
 		waitClickability(element,3);
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 	}
 
+	//attempt to click on a web element a couple of times
 	public static void clickManyTimes(WebElement element) {
 		waitClickability(element,3);
 		for (int i = 0; i < 3; i++) {
@@ -110,7 +111,7 @@ public class UtilityMethods {
 		}
 	}
 
-	//open a new tab
+	//open a new tab using JSexecutor
 	public static void openNewTab(){
 		((JavascriptExecutor) driver).executeScript("window.open();");
 	}

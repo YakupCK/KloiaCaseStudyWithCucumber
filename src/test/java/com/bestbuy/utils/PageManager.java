@@ -4,6 +4,12 @@ import com.bestbuy.pages.*;
 
 public class PageManager {
 
+	/*
+		This class provides us the page objects
+		If one object is already created, it's returned
+		Otherwise a new object is returned
+	 */
+
 	private HomePage homePage;
 	private SelectCountryPage selectCountryPage;
 	private SearchedItemPage searchedItemPage;

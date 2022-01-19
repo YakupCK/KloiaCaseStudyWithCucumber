@@ -22,7 +22,6 @@ public class LoginStepDef {
 		signInPage.loginWithCredentials(credentials.get("username"), credentials.get("password"));
 	}
 
-
 	@Then("I should be logged in")
 	public void i_should_be_logged_in() {
 			homePage.verifyLogin();

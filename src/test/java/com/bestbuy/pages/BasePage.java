@@ -39,16 +39,9 @@ public abstract class BasePage {
 	@FindBy(linkText = "Sign In")
 	private WebElement signInBtn;
 
+
 	//*****************************************
 
-
-	//navigate through menu options
-	public void navigateToMenuOptions(String menuName){
-		String locator = "//*[text()='" + menuName + "']";
-		UtilityMethods.waitClickability(By.xpath(locator),5);
-		WebElement menu = driver.findElement(By.xpath("//*[text()='" + menuName + "']"));
-		menu.click();
-	}
 
 	//navigate through menu options
 	public void navigateToMenuOptions(List<String> modules){
@@ -74,7 +67,6 @@ public abstract class BasePage {
 		seeAllSavedItems.click();
 	}
 
-
 	//go to sign in page
 	public void goToSignInPage() {
 		navigateToRightTopMenus("Account");
@@ -82,7 +74,7 @@ public abstract class BasePage {
 		signInBtn.click();
 	}
 
-	//verify if login is successful with credentials
+	//verify if login is successful
 	public void verifyLogin(){
 		UtilityMethods.waitForVisibility(accountBtn,7);
 		Assert.assertTrue(accountBtn.getText().toLowerCase().contains(PropertyReader.getProperty("username").toLowerCase()));

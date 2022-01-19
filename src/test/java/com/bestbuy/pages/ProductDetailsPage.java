@@ -14,7 +14,6 @@ public class ProductDetailsPage extends BasePage {
 	@FindBy(css = "div.sku-title h1")
 	private WebElement productName;
 
-
 	//get name of the product
 	public String getProductName(){
 		return productName.getText();
