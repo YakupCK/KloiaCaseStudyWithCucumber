@@ -8,40 +8,48 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends BasePage {
 
-	//--sign in btn after clicking account menu--
-	@FindBy(linkText = "Sign In")
-	private WebElement signInBtn;
 
 	//--username displayed after login--
 	@FindBy(css = "span.plButton-label.v-ellipsis")
 	private WebElement username;
 
+	//--search box--
+	@FindBy(id = "gh-search-input")
+	private WebElement searchBox;
+
+	//--find button--
+	@FindBy(className = "header-search-button")
+	private WebElement findBtn;
+
 	//*****************************************
 
 	//--navigate to homepage:'bestBuy.com'--
-	public void goToHomePage(){
+	public void goToHomePage() {
 		driver.get(PropertyReader.getProperty("url"));
 	}
 
 	//--navigate to homepage:with Parameter--
-	public void goToHomePage(String URL){
+	public void goToHomePage(String URL) {
 		driver.get(PropertyReader.getProperty("url"));
 	}
 
-	//close pop up at the beginning
-	public void closePopUp(){
-		try {
-			String locator = "button[class='c-close-icon c-modal-close-icon']";
-			UtilityMethods.waitClickability(By.cssSelector(locator),5);
-			WebElement closeBtn = driver.findElement(By.cssSelector(locator));
-			closeBtn.click();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	//close pop up at the beginning
+//	public void closePopUp() {
+//		try {
+//			String locator = "button[class='c-close-icon c-modal-close-icon']";
+//			UtilityMethods.waitClickability(By.cssSelector(locator), 4);
+//			WebElement closeBtn = driver.findElement(By.cssSelector(locator));
+//			closeBtn.click();
+//			UtilityMethods.waitClickability(searchBox,3);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	//verify page title
 	public void verifyPageTitle(String expectedTitle) {
@@ -49,33 +57,21 @@ public class HomePage extends BasePage {
 		Assert.assertEquals(expectedTitle, actualTitle);
 	}
 
-	//go to sign in page
-	public void goToSignInPage() {
-		navigateToRightTopMenus("Account");
-		UtilityMethods.waitClickability(signInBtn,5);
-		signInBtn.click();
-	}
-
-	//verify if login is successful
-	public void verifyLogin(){
-		UtilityMethods.waitForVisibility(username,7);
-		Assert.assertEquals(PropertyReader.getProperty("username"),username.getText());
-	}
-
 	//open a new tab
-	public void openNewTab(){
+	public void openNewTab() {
 		UtilityMethods.openNewTab();
 	}
 
-
-
-
-
-
-
-
-
+	//search for item
+	public void searchItem(String itemName) {
+		UtilityMethods.waitClickability(searchBox, 5);
+		searchBox.click();
+		searchBox.sendKeys(itemName);
+		findBtn.click();
 	}
+
+
+}
 
 
 

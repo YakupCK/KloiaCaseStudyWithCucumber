@@ -62,7 +62,7 @@ public class UtilityMethods {
 
 	public static void waitForNewWindow(){
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 6);
+			WebDriverWait wait = new WebDriverWait(driver, 4);
 			wait.until(ExpectedConditions.numberOfWindowsToBe(2));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -70,10 +70,44 @@ public class UtilityMethods {
 	}
 
 	public static void switchToWindow(int index){
-		waitForNewWindow();
-		Set<String> windowHandles = driver.getWindowHandles();
-		ArrayList<String> allTabs = new ArrayList<>(windowHandles);
-		driver.switchTo().window(allTabs.get(index));
+		try {
+			waitForNewWindow();
+			Set<String> windowHandles = driver.getWindowHandles();
+			ArrayList<String> allTabs = new ArrayList<>(windowHandles);
+			driver.switchTo().window(allTabs.get(index));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void waitForText(WebElement element, String text){
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 6);
+			wait.until(ExpectedConditions.textToBePresentInElement(element,text));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void clickWithJSExe(WebElement element) {
+		waitClickability(element,3);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+	}
+
+	public static void clickManyTimes(WebElement element) {
+		waitClickability(element,3);
+		for (int i = 0; i < 3; i++) {
+			try {
+				element.click();
+			} catch (Exception e) {
+				e.printStackTrace();
+				try {
+					Thread.sleep(1000);
+				} catch (Exception ee) {
+					ee.printStackTrace();
+				}
+			}
+		}
 	}
 
 	//open a new tab

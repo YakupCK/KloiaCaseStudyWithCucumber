@@ -8,6 +8,7 @@
 # ● Open Saved Items list
 # ● Verify that the title of saved product is on the list
 
+@ChromeProfile @wip
 Feature: Filter and Save functionality
 
   Scenario: Task-4: Filter the results by Philips and Save an item

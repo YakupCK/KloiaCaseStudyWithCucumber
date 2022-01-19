@@ -24,7 +24,7 @@ public class Hooks {
 
     @Before("@ChromeProfile")
     public void setUpForChromeProfile(){
-        driver = Driver.getChromeDriverProfile();
+        driver = Driver.getDriverChromeProfile();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Long.parseLong(PropertyReader.getProperty("implicitWait")), TimeUnit.SECONDS);
     }

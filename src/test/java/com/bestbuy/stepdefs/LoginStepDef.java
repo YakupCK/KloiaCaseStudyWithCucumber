@@ -22,9 +22,10 @@ public class LoginStepDef {
 		signInPage.loginWithCredentials(credentials.get("username"), credentials.get("password"));
 	}
 
+
 	@Then("I should be logged in")
 	public void i_should_be_logged_in() {
-		homePage.verifyLogin();
+			homePage.verifyLogin();
 	}
 
 	@When("I log in with my Google account")
@@ -44,6 +45,11 @@ public class LoginStepDef {
 	@Then("I should be logged in on the newly opened tab as well")
 	public void i_should_be_logged_in_on_the_newly_opened_tab_as_well() {
 		homePage.verifyLogin();
+	}
+
+	@Then("I log out")
+	public void i_log_out() {
+		homePage.logOut();
 	}
 
 

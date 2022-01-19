@@ -7,17 +7,17 @@ import org.openqa.selenium.support.FindBy;
 
 public class SelectCountryPage extends BasePage {
 
-	//click on Unites States
-	public void selectUS() {
-		try {
-			String locator = "United States";
-			UtilityMethods.waitClickability(By.linkText(locator),3);
-			WebElement unitedStates = driver.findElement(By.linkText(locator));
-			unitedStates.click();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	//click on Unites States
+//	public void selectUS() {
+//		try {
+//			String locator = "United States";
+//			UtilityMethods.waitClickability(By.linkText(locator),1);
+//			WebElement unitedStates = driver.findElement(By.linkText(locator));
+//			unitedStates.click();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 
 }

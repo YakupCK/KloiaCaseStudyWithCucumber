@@ -14,16 +14,8 @@
 #  ● Verify user logged in on the newly opened tab
 
 Feature: Login functionality
-  @wip
-  Scenario: Task-2: Login with valid credentials
-    Given I'm on the home page
-    When I log in with following credentials hitting Enter key
-        |username|famore8312@dkb3.com|
-        |password|KloiaCaseStudy5516889912|
-    Then I should be logged in
 
-
-  @ChromeProfile @wip
+  @ChromeProfile @wip @google
   Scenario: Task-3: Login with Google account
     Given I'm on the home page
     When I log in with my Google account
@@ -31,3 +23,14 @@ Feature: Login functionality
 
     When I go to "https://www.bestbuy.com" opening a new tab
     Then I should be logged in on the newly opened tab as well
+    And I log out
+
+  @ChromeProfile @wip
+  Scenario: Task-2: Login with valid credentials
+    Given I'm on the home page
+    When I log in with following credentials hitting Enter key
+      | username | suhaill732@xvlinjury.com |
+      | password | one plus one is two      |
+    Then I should be logged in
+    And I log out
+

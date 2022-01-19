@@ -4,6 +4,7 @@ import com.bestbuy.stepdefs.Hooks;
 import com.bestbuy.utils.Driver;
 import com.bestbuy.utils.PropertyReader;
 import com.bestbuy.utils.UtilityMethods;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,26 +23,24 @@ public abstract class BasePage {
 		PageFactory.initElements(driver, this);
 	}
 
-	//--search box--
-	@FindBy(id = "gh-search-input")
-	private WebElement searchBox;
-
-	//--find button--
-	@FindBy(className = "header-search-button")
-	private WebElement findBtn;
-
 	//--See all your saved items btn --
 	@FindBy(linkText = "See all your saved items ›")
 	private WebElement seeAllSavedItems;
 
+	//--log out btn --
+	@FindBy(id = "logout-button")
+	private WebElement logOutBtn;
+
+	//--account btn--
+	@FindBy(css = "span.plButton-label.v-ellipsis")
+	private WebElement accountBtn;
+
+	//--sign in btn after clicking account menu--
+	@FindBy(linkText = "Sign In")
+	private WebElement signInBtn;
+
 	//*****************************************
 
-	//search for item
-	public void searchItem(String itemName){
-		UtilityMethods.waitClickability(searchBox,3);
-		searchBox.sendKeys(itemName);
-		findBtn.click();
-	}
 
 	//navigate through menu options
 	public void navigateToMenuOptions(String menuName){
@@ -73,6 +72,29 @@ public abstract class BasePage {
 	public void goToAllSavedItems(){
 		UtilityMethods.waitClickability(seeAllSavedItems, 3);
 		seeAllSavedItems.click();
+	}
+
+
+	//go to sign in page
+	public void goToSignInPage() {
+		navigateToRightTopMenus("Account");
+		UtilityMethods.waitClickability(signInBtn,5);
+		signInBtn.click();
+	}
+
+	//verify if login is successful with credentials
+	public void verifyLogin(){
+		UtilityMethods.waitForVisibility(accountBtn,7);
+		Assert.assertTrue(accountBtn.getText().toLowerCase().contains(PropertyReader.getProperty("username").toLowerCase()));
+	}
+
+	//log out
+	public void logOut(){
+		UtilityMethods.waitClickability(accountBtn,4);
+		accountBtn.click();
+		UtilityMethods.waitClickability(logOutBtn, 3);
+		logOutBtn.click();
+		UtilityMethods.waitForText(accountBtn,"Account");
 	}
 
 }

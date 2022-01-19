@@ -19,8 +19,8 @@ public class SearchStepDef {
 	@Given("I'm on the home page")
 	public void i_m_on_the_home_page() {
 		homePage.goToHomePage();
-		selectCountryPage.selectUS();
-		homePage.closePopUp();
+//		selectCountryPage.selectUS();
+//		homePage.closePopUp();
 	}
 
 	@Given("page title is {string}")

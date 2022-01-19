@@ -12,8 +12,10 @@ public class SignInWithGooglePage extends BasePage {
 	private WebElement googleAccount;
 
 	public void login(){
-		UtilityMethods.waitClickability(googleAccount,5);
-		googleAccount.click();
+		UtilityMethods.waitClickability(googleAccount,3);
+		UtilityMethods.clickWithJSExe(googleAccount);
+//		googleAccount.click();
+		UtilityMethods.switchToWindow(0);
 	}
 
 

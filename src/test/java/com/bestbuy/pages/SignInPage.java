@@ -22,14 +22,14 @@ public class SignInPage extends BasePage {
 
 	//login with given credentials and hit thr ENTER ket from keyboard
 	public void loginWithCredentials(String username, String password){
-		UtilityMethods.waitClickability(usernameField,5);
+		UtilityMethods.waitClickability(usernameField,2);
 		usernameField.sendKeys(username);
 		passwordField.sendKeys(password, Keys.ENTER);
 	}
 
 		//login with Google account
 	public void loginWithGoogle(){
-		UtilityMethods.waitClickability(signInWithGoogle,5);
+		UtilityMethods.waitClickability(signInWithGoogle,1);
 		signInWithGoogle.click();
 		UtilityMethods.switchToWindow(1);
 	}
